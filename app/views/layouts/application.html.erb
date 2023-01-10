@@ -4,15 +4,14 @@
     <title>Thefirstrails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <% if user_signed_in? %>
-      <p>こんにちわ, <%= current_user.email %></p>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <p><strong><%= current_user.email %> </strong><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
     <% else %>
       <%= link_to "サインイン", new_user_session_path %>
       <%= link_to "ユーザ登録", new_user_registration_path %>
