@@ -1,25 +1,30 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Title:</strong>
-  <%= @book.title %>
+    <strong>Title:</strong>
+    <%= @book.title %>
 </p>
-
 <p>
-  <strong>Number of pages:</strong>
-  <%= @book.number_of_pages %>
+    <strong>Number of pages:</strong>
+    <%= @book.number_of_pages %>
 </p>
-
 <p>
-  <% if @book.image.attached? %>
-    <%= image_tag @book.image %>
-  <% end %>
+    <% if @book.image.attached? %>
+        <%= image_tag @book.image %>
+    <% end %>
 </p>
-
 <p>
-  <strong>Detail:</strong>
-  <%= @book.detail %>
+    <strong>Detail:</strong>
+    <%= @book.detail %>
 </p>
-
+<p>Review From</p>
+<%= form_with(model: @book_review, local: true) do |form| %>
+    <div class= "field">
+        <%= form.text_area :review %>
+        <%= form.hidden_field :book_id, :value => @book.id %>
+    </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
