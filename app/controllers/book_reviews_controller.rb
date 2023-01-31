@@ -22,6 +22,7 @@ class BookReviewsController < ApplicationController
   # POST /book_reviews or /book_reviews.json
   def create
     @book_review = BookReview.new(book_review_params)
+    @book_review.user_id = current_user.id
 
     respond_to do |format|
       if @book_review.save
